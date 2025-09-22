@@ -10,7 +10,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Generate HTML
-        run: ./create-html.sh
+        run: |
+          mkdir -p ./build
+          envsubst < ./src/template.html > ./build/index.html
 
       - name: Upload Artefact
         id: deployment

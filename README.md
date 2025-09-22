@@ -11,8 +11,5 @@ So instead we'll do a redirect in one place, so I don't have to update my entire
 Usage:
 ------
 
-Set a `$DISCORD_ID` environment variable, then run [`create-html.sh`](./create-html.sh). This will take 
-[`src/template.html`](./src/template.html), fill in the environment variable, and produce `build/index.html` which can
-be uploaded to GitHub Pages on [https://fios-quest.com/discord](https://fios-quest.com/discord)
-
-This is automated via a GitHub Workflow
+There's a workflow file for replacing the template variables. Change the environment variables in GitHubs settings to
+change the invite url.
