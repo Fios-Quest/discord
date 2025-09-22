@@ -1,0 +1,26 @@
+name: deploy.yml
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate HTML
+        run: ./create-html.sh
+
+      - name: Upload Artefact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/
+
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
